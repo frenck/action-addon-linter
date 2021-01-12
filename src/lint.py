@@ -51,11 +51,17 @@ with open("/config.schema.json") as fp:
 DefaultValidatingDraft7Validator = check_is_default(Draft7Validator)
 v = DefaultValidatingDraft7Validator(schema)
 
+exit_code = 0
+
 for error in sorted(v.iter_errors(configuration), key=str):
     print(f"::error file={config}::{error.message}")
+    exit_code = 1
 
 if os.environ["INPUT_COMMUNITY"] != "true":
-    sys.exit()
+    sys.exit(exit_code)
 
 if configuration["version"] != "dev":
     print(f"::error file={config}::Add-on version identifier must be 'dev'")
+    exit_code = 1
+
+sys.exit(exit_code)

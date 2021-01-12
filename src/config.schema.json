@@ -1,0 +1,263 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "advanced": {
+      "default": false,
+      "type": "boolean"
+    },
+    "apparmor": {
+      "default": true,
+      "type": ["string", "boolean"]
+    },
+    "arch": {
+      "items": {
+        "enum": ["aarch64", "amd64", "armhf", "armv7", "i386"],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "audio": {
+      "default": false,
+      "type": "boolean"
+    },
+    "auth_api": {
+      "default": false,
+      "type": "boolean"
+    },
+    "auto_uart": {
+      "default": false,
+      "type": "boolean"
+    },
+    "boot": {
+      "enum": ["auto", "manual"],
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "devices": {
+      "items": {
+        "pattern": "^(.*):(.*):([rwm]{1,3})$"
+      },
+      "type": "array"
+    },
+    "devicetree": {
+      "default": false,
+      "type": "boolean"
+    },
+    "discovery": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "docker_api": {
+      "default": false,
+      "type": "boolean"
+    },
+    "environment": {
+      "additionalProperties": {},
+      "type": "object"
+    },
+    "full_access": {
+      "default": false,
+      "type": "boolean"
+    },
+    "gpio": {
+      "default": false,
+      "type": "boolean"
+    },
+    "hassio_api": {
+      "default": false,
+      "type": "boolean"
+    },
+    "hassio_role": {
+      "default": "default",
+      "enum": ["admin", "backup", "default", "homeassistant", "manager"],
+      "type": "string"
+    },
+    "homeassistant": {
+      "default": false,
+      "type": "boolean"
+    },
+    "homeassistant_api": {
+      "default": false,
+      "type": "boolean"
+    },
+    "host_dbus": {
+      "default": false,
+      "type": "boolean"
+    },
+    "host_ipc": {
+      "default": false,
+      "type": "boolean"
+    },
+    "host_network": {
+      "default": false,
+      "type": "boolean"
+    },
+    "host_pid": {
+      "default": false,
+      "type": "boolean"
+    },
+    "image": {
+      "type": "string"
+    },
+    "ingress": {
+      "default": false,
+      "type": "boolean"
+    },
+    "ingress_entry": {
+      "type": "string"
+    },
+    "ingress_port": {
+      "default": 8099,
+      "type": "integer"
+    },
+    "init": {
+      "default": true,
+      "type": "boolean"
+    },
+    "kernel_modules": {
+      "default": false,
+      "type": "boolean"
+    },
+    "legacy": {
+      "default": false,
+      "type": "boolean"
+    },
+    "machine": {
+      "items": {
+        "pattern": "^!?(?:intel-nuc|odroid-c2|odroid-c4|odroid-n2|odroid-xu|qemuarm-64|qemuarm|qemux86-64|qemux86|raspberrypi|raspberrypi2|raspberrypi3-64|raspberrypi3|raspberrypi4-64|raspberrypi4|tinker)$"
+      },
+      "type": "array"
+    },
+    "map": {
+      "items": {
+        "pattern": "^(config|ssl|addons|backup|share|media)(rw|ro)?$"
+      },
+      "type": "array"
+    },
+    "name": {
+      "type": "string"
+    },
+    "options": {
+      "additionalProperties": {},
+      "type": "object"
+    },
+    "panel_admin": {
+      "default": true,
+      "type": "boolean"
+    },
+    "panel_icon": {
+      "default": "mdi:puzzle",
+      "type": "string"
+    },
+    "panel_title": {
+      "type": "string"
+    },
+    "ports": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "type": "object"
+    },
+    "ports_description": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "type": "object"
+    },
+    "privileged": {
+      "enum": [
+        "DAC_READ_SEARCH",
+        "NET_ADMIN",
+        "SYS_ADMIN",
+        "SYS_MODULE",
+        "SYS_NICE",
+        "SYS_PTRACE",
+        "SYS_RAWIO",
+        "SYS_RESOURCE",
+        "SYS_TIME"
+      ],
+      "type": "string"
+    },
+    "schema": {
+      "additionalProperties": {},
+      "type": "object"
+    },
+    "services": {
+      "items": {
+        "pattern": "^(?P<service>mqtt|mysql):(?P<rights>provide|want|need)$"
+      },
+      "type": "array"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "snapshot_exclude": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "stage": {
+      "default": "stable",
+      "enum": ["deprecated", "experimental", "stable"],
+      "type": "string"
+    },
+    "startup": {
+      "enum": ["application", "initialize", "once", "services", "system"],
+      "type": "string"
+    },
+    "stdin": {
+      "default": false,
+      "type": "boolean"
+    },
+    "timeout": {
+      "default": 10,
+      "type": "integer"
+    },
+    "tmpfs": {
+      "type": "string"
+    },
+    "udev": {
+      "default": false,
+      "type": "boolean"
+    },
+    "url": {
+      "format": "uri-reference",
+      "type": "string"
+    },
+    "usb": {
+      "default": false,
+      "type": "boolean"
+    },
+    "version": {
+      "type": "string"
+    },
+    "video": {
+      "default": false,
+      "type": "boolean"
+    },
+    "watchdog": {
+      "type": "string"
+    },
+    "webui": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "arch",
+    "boot",
+    "description",
+    "name",
+    "options",
+    "schema",
+    "slug",
+    "startup",
+    "version"
+  ],
+  "type": "object"
+}

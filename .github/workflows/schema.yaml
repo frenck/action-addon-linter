@@ -1,0 +1,23 @@
+---
+name: Schema
+
+# yamllint disable-line rule:truthy
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: 👷 Test generate schema
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: 🚀 Build schema
+        run: |
+          npx typescript-json-schema \
+            --refs \
+            --noExtraProps \
+            --required \
+            --uniqueNames \
+            --defaultNumberType integer \
+            ./src/config.schema.ts Config \
+              > ./src/config.schema.json

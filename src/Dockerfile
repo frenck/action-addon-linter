@@ -9,6 +9,6 @@ RUN \
     -r /tmp/requirements.txt
 
 COPY config.schema.json /config.schema.json
-COPY validate.py /validate.py
+COPY lint.py /lint.py
 
 ENTRYPOINT ["python3", "/lint.py"]

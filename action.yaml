@@ -12,7 +12,7 @@ inputs:
     description: Path to the add-on configuration (where config.json is)
     required: true
   community:
-    description: Enable Home Assistant Community Add-ons mode, with specific checks
+    description: Enable Home Assistant Community Add-ons mode
     default: "false"
     required: false
 

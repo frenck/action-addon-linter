@@ -37,10 +37,10 @@ jobs:
 
 ## Arguments
 
-| Input  | Description | Usage |
-| :---:     |     :---:   |    :---:   |
-| `path`  | Path to the folder containing the add-on config.json file. | **Required** |
-| `community`  | Enable Home Assistant Community Add-ons mode, with specific checks. | _Optional_ |
+|    Input    |                             Description                             |    Usage     |
+| :---------: | :-----------------------------------------------------------------: | :----------: |
+|   `path`    |     Path to the folder containing the add-on config.json file.      | **Required** |
+| `community` | Enable Home Assistant Community Add-ons mode, with specific checks. |  _Optional_  |
 
 ## Updating the JSON Schema
 
@@ -70,12 +70,12 @@ This repository keeps a change log using [GitHub's releases][releases]
 functionality.
 
 Releases are based on [Semantic Versioning][semver], and use the format
-of ``MAJOR.MINOR.PATCH``. In a nutshell, the version will be incremented
+of `MAJOR.MINOR.PATCH`. In a nutshell, the version will be incremented
 based on the following:
 
-- ``MAJOR``: Incompatible or major changes.
-- ``MINOR``: Backwards-compatible new features and enhancements.
-- ``PATCH``: Backwards-compatible bugfixes and package updates.
+- `MAJOR`: Incompatible or major changes.
+- `MINOR`: Backwards-compatible new features and enhancements.
+- `PATCH`: Backwards-compatible bugfixes and package updates.
 
 ## Contributing
 

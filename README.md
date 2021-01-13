@@ -24,7 +24,7 @@ name: Lint
 on: [push, pull_request]
 jobs:
   build:
-    name: ✅ Add-on configuration
+    name: Add-on configuration
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
@@ -78,6 +78,63 @@ based on the following:
 - `MAJOR`: Incompatible or major changes.
 - `MINOR`: Backwards-compatible new features and enhancements.
 - `PATCH`: Backwards-compatible bugfixes and package updates.
+
+## Versions & Updating
+
+You can specify which version of this GitHub Action your workflow should use.
+And even allowing for using the latest major or minor version.
+
+For example; this will use release `v1.1.1` of a GitHub Action:
+
+```yaml
+- name: 🚀 Run Home Assistant Add-on Lint
+  uses: frenck/action-addon-linter@v1.1.1
+```
+
+While the following example, will use the `v1.1.x` minor release, for example
+if `v1.1.2` is the latest releases (starting with `v1.1`), this will run
+`v1.1.2`:
+
+```yaml
+- name: 🚀 Run Home Assistant Add-on Lint
+  uses: frenck/action-addon-linter@v1.1
+```
+
+As in the examples throughout the documentation, the following example is
+locked on major version, meaning any `v1.x.x` latest version will be used,
+as long as it is version 1.
+
+```yaml
+- name: 🚀 Run Home Assistant Add-on Lint
+  uses: frenck/action-addon-linter@v1
+```
+
+### Automatically update using Dependabot
+
+The advantage of locking against a more specific version, is that it prevents
+surprises if an issue or breaking changes were introduced in a newer release.
+
+The disadvantage of being more specific, is that it requires you to keep things
+up to date. Fortunately, GitHub has a tool for that, called: Dependabot.
+
+Dependabot can automatically open a pull request on your repository to update
+this Action for you. You can instantly see if the new version works (as the
+pull request shows the success or failure status) and you can decide to
+merge it in by hitting the merge button. Quick, easy and always up2date.
+
+To enable Dependabot, create a file called `.github/dependabot.yaml`:
+
+```yaml
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+```
+
+Your all set! Dependabot will now check (and update) your GitHub actions
+every day. 🤩
 
 ## Contributing
 

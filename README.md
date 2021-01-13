@@ -64,6 +64,8 @@ And make the resulting file pretty:
 npx prettier --write ./src/config.schema.json
 ```
 
+The same, of course, applies to the `src/build.schema.ts` file.
+
 ## Changelog & Releases
 
 This repository keeps a change log using [GitHub's releases][releases]

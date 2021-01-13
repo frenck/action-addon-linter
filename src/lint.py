@@ -85,5 +85,6 @@ if not build.exists():
 
 if set(configuration["arch"]) != set(build_configuration["build_from"]):
     print(f"::error file={build}::Architectures in config and build do not match")
+    exit_code = 1
 
 sys.exit(exit_code)

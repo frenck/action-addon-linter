@@ -57,11 +57,33 @@ for error in sorted(v.iter_errors(configuration), key=str):
     print(f"::error file={config}::{error.message}")
     exit_code = 1
 
+build = path / "build.json"
+if build.exists():
+    with open(build) as fp:
+        build_configuration = json.load(fp)
+
+    with open("/build.schema.json") as fp:
+        build_schema = json.load(fp)
+
+    v = DefaultValidatingDraft7Validator(build_schema)
+    exit_code = 0
+
+    for error in sorted(v.iter_errors(build_configuration), key=str):
+        print(f"::error file={build}::{error.message}")
+        exit_code = 1
+
 if os.environ["INPUT_COMMUNITY"] != "true":
     sys.exit(exit_code)
 
 if configuration["version"] != "dev":
     print(f"::error file={config}::Add-on version identifier must be 'dev'")
     exit_code = 1
+
+if not build.exists():
+    print(f"::error file={build}::The build.json file is missing")
+    sys.exit(1)
+
+if set(configuration["arch"]) != set(build_configuration["build_from"]):
+    print(f"::error file={build}::Architectures in config and build do not match")
 
 sys.exit(exit_code)

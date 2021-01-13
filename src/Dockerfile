@@ -8,6 +8,7 @@ RUN \
     --prefer-binary \
     -r /tmp/requirements.txt
 
+COPY build.schema.json /build.schema.json
 COPY config.schema.json /config.schema.json
 COPY lint.py /lint.py
 

@@ -28,6 +28,9 @@
 - name: "ci"
   color: 1d76db
   description: "Work that improves the continue integration."
+- name: "dependencies"
+  color: 1d76db
+  description: "Upgrade or downgrade of project dependencies."
 
 - name: "in-progress"
   color: fbca04
@@ -82,3 +85,10 @@
 - name: "priority-low"
   color: e4ea8a
   description: "Nice addition, maybe... someday..."
+
+- name: "major"
+  color: b60205
+  description: "This PR causes a major version bump in the version number."
+- name: "minor"
+  color: 0e8a16
+  description: "This PR causes a minor version bump in the version number."

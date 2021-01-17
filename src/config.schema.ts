@@ -29,7 +29,10 @@ export interface Config {
    */
   auto_uart?: boolean;
 
-  boot: "auto" | "manual";
+  /**
+   * @default auto
+   */
+  boot?: "auto" | "manual";
 
   description: string;
 
@@ -148,7 +151,10 @@ export interface Config {
 
   name: string;
 
-  options: { [key: string]: any; };
+  /**
+   * @default {}
+   */
+  options?: { [key: string]: any; };
 
   /**
    * @default true
@@ -181,7 +187,10 @@ export interface Config {
 
   privileged?: "DAC_READ_SEARCH" | "NET_ADMIN" | "SYS_ADMIN" | "SYS_MODULE" | "SYS_NICE" | "SYS_PTRACE" | "SYS_RAWIO" | "SYS_RESOURCE" | "SYS_TIME";
 
-  schema: { [key: string]: any; };
+  /**
+   * @default {}
+   */
+  schema?: { [key: string]: any; };
 
   /**
    * @items.pattern ^(?P<service>mqtt|mysql):(?P<rights>provide|want|need)$
@@ -197,7 +206,10 @@ export interface Config {
    */
   stage?: "stable" | "experimental" | "deprecated";
 
-  startup: "application" | "initialize" | "once" | "services" | "system";
+  /**
+   * @default application
+   */
+  startup?: "application" | "initialize" | "once" | "services" | "system";
 
   /**
    * @default false

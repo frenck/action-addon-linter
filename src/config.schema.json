@@ -30,6 +30,7 @@
       "type": "boolean"
     },
     "boot": {
+      "default": "auto",
       "enum": ["auto", "manual"],
       "type": "string"
     },
@@ -144,6 +145,7 @@
     },
     "options": {
       "additionalProperties": {},
+      "default": {},
       "type": "object"
     },
     "panel_admin": {
@@ -185,6 +187,7 @@
     },
     "schema": {
       "additionalProperties": {},
+      "default": {},
       "type": "object"
     },
     "services": {
@@ -208,6 +211,7 @@
       "type": "string"
     },
     "startup": {
+      "default": "application",
       "enum": ["application", "initialize", "once", "services", "system"],
       "type": "string"
     },
@@ -248,16 +252,6 @@
       "type": "string"
     }
   },
-  "required": [
-    "arch",
-    "boot",
-    "description",
-    "name",
-    "options",
-    "schema",
-    "slug",
-    "startup",
-    "version"
-  ],
+  "required": ["arch", "description", "name", "slug", "version"],
   "type": "object"
 }

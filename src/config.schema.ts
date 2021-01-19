@@ -145,7 +145,7 @@ export interface Config {
   machine?: string[];
 
   /**
-   * @items.pattern ^(config|ssl|addons|backup|share|media)(rw|ro)?$
+   * @items.pattern ^(config|ssl|addons|backup|share|media)(:(rw|ro))?$
    */
   map?: string[];
 

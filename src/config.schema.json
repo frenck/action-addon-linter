@@ -136,7 +136,7 @@
     },
     "map": {
       "items": {
-        "pattern": "^(config|ssl|addons|backup|share|media)(rw|ro)?$"
+        "pattern": "^(config|ssl|addons|backup|share|media)(:(rw|ro))?$"
       },
       "type": "array"
     },

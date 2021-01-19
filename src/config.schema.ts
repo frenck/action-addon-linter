@@ -177,13 +177,7 @@ export interface Config {
     [key: string]: number;
   };
 
-  ports?: {
-    /**
-     * @min 1
-     * @max 65535
-     */
-    [key: string]: number;
-  };
+  ports?: { [key: string]: string; };
 
   privileged?: "DAC_READ_SEARCH" | "NET_ADMIN" | "SYS_ADMIN" | "SYS_MODULE" | "SYS_NICE" | "SYS_PTRACE" | "SYS_RAWIO" | "SYS_RESOURCE" | "SYS_TIME";
 

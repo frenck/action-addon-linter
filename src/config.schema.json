@@ -161,7 +161,7 @@
     },
     "ports": {
       "additionalProperties": {
-        "type": "integer"
+        "type": "string"
       },
       "type": "object"
     },

@@ -177,18 +177,21 @@
       "type": "object"
     },
     "privileged": {
-      "enum": [
-        "DAC_READ_SEARCH",
-        "NET_ADMIN",
-        "SYS_ADMIN",
-        "SYS_MODULE",
-        "SYS_NICE",
-        "SYS_PTRACE",
-        "SYS_RAWIO",
-        "SYS_RESOURCE",
-        "SYS_TIME"
-      ],
-      "type": "string"
+      "items": {
+        "enum": [
+          "DAC_READ_SEARCH",
+          "NET_ADMIN",
+          "SYS_ADMIN",
+          "SYS_MODULE",
+          "SYS_NICE",
+          "SYS_PTRACE",
+          "SYS_RAWIO",
+          "SYS_RESOURCE",
+          "SYS_TIME"
+        ],
+        "type": "string"
+      },
+      "type": "array"
     },
     "schema": {
       "additionalProperties": {},

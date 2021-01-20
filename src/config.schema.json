@@ -80,7 +80,7 @@
     },
     "homeassistant": {
       "default": false,
-      "type": "boolean"
+      "type": "string"
     },
     "homeassistant_api": {
       "default": false,

@@ -161,13 +161,13 @@
     },
     "ports": {
       "additionalProperties": {
-        "type": "string"
+        "type": "integer"
       },
       "type": "object"
     },
     "ports_description": {
       "additionalProperties": {
-        "type": "integer"
+        "type": "string"
       },
       "type": "object"
     },

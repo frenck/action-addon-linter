@@ -114,7 +114,9 @@
     },
     "ingress_port": {
       "default": 8099,
-      "type": "integer"
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
     },
     "init": {
       "default": true,
@@ -161,7 +163,10 @@
     },
     "ports": {
       "additionalProperties": {
-        "type": "integer"
+        "anyOf": [
+          { "type": "integer", "minimum": 1, "maximum": 65535 },
+          { "type": "null" }
+        ]
       },
       "type": "object"
     },

@@ -66,7 +66,6 @@ if build.exists():
         build_schema = json.load(fp)
 
     v = DefaultValidatingDraft7Validator(build_schema)
-    exit_code = 0
 
     for error in sorted(v.iter_errors(build_configuration), key=str):
         print(f"::error file={build}::{error.message}")

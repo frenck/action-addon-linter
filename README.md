@@ -44,27 +44,18 @@ jobs:
 
 ## Updating the JSON Schema
 
-The JSON Schema is generated from the `src/config.schema.ts` file. If you make
-changes to that file, you can update it using the following commands:
+For the larger part, JSON Schemas are used to validate the configuration files.
+The schema files for both the add-on `config.json` and `build.json` can be found
+in the `src/` folder.
 
-```bash
-npx typescript-json-schema \
-  --refs \
-  --noExtraProps \
-  --required \
-  --uniqueNames \
-  --defaultNumberType integer \
-  ./src/config.schema.ts Config \
-    > ./src/config.schema.json
-```
+- `src/config.schema.json` is used to validate `config.json`
+- `src/build.schema.json` is used to validate `build.json`
 
-And make the resulting file pretty:
+If you adjust the schema, please make sure they are pretty:
 
 ```bash
 npx prettier --write ./src/config.schema.json
 ```
-
-The same, of course, applies to the `src/build.schema.ts` file.
 
 ## Changelog & Releases
 

@@ -57,6 +57,10 @@ for error in sorted(v.iter_errors(configuration), key=str):
     print(f"::error file={config}::{error.message}")
     exit_code = 1
 
+if configuration.get("ingress", False) and configuration.get("webui"):
+    print(f"::error file={config}::'webui' should be removed, Ingress is enabled.")
+    exit_code = 1
+
 build = path / "build.json"
 if build.exists():
     with open(build) as fp:

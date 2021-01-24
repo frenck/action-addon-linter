@@ -61,6 +61,16 @@ if configuration.get("ingress", False) and configuration.get("webui"):
     print(f"::error file={config}::'webui' should be removed, Ingress is enabled.")
     exit_code = 1
 
+if "ports" in configuration and "ports_description" not in configuration:
+    print(f"::error file={config}::'ports' is defined without 'ports_description'.")
+    exit_code = 1
+
+if set(configuration.get("ports", {})) != set(
+    configuration.get("ports_description", {})
+):
+    print(f"::error file={config}::'ports' and 'ports_description' do not match.")
+    exit_code = 1
+
 build = path / "build.json"
 if build.exists():
     with open(build) as fp:

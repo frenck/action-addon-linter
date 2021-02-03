@@ -93,6 +93,22 @@ if set(configuration.get("ports", {})) != set(
     print(f"::error file={config}::'ports' and 'ports_description' do not match.")
     exit_code = 1
 
+if "auto_uart" in configuration:
+    print(f"::error file={config}::'auto_uart' is deprecated, use 'uart' instead.")
+    exit_code = 1
+
+if any(":" in line for line in configuration.get("devices", [])):
+    print(
+        f"::error file={config}::'devices' uses a deprecated format, the new format uses a list of paths only."
+    )
+    exit_code = 1
+
+if not isinstance(configuration.get("tmpfs", False), bool):
+    print(
+        f"::error file={config}::'tmpfs' use a deprecated format, it is a boolean now."
+    )
+    exit_code = 1
+
 # Checks regarding build.json (if found)
 build = path / "build.json"
 if build.exists():

@@ -39,7 +39,7 @@
     },
     "devices": {
       "items": {
-        "pattern": "^(.*):(.*):([rwm]{1,3})$"
+        "type": "string"
       },
       "type": "array"
     },
@@ -232,7 +232,12 @@
       "type": "integer"
     },
     "tmpfs": {
-      "type": "string"
+      "default": false,
+      "type": ["string", "boolean"]
+    },
+    "uart": {
+      "default": false,
+      "type": "boolean"
     },
     "udev": {
       "default": false,

@@ -57,9 +57,31 @@ for error in sorted(v.iter_errors(configuration), key=str):
     print(f"::error file={config}::{error.message}")
     exit_code = 1
 
-if configuration.get("ingress", False) and configuration.get("webui"):
-    print(f"::error file={config}::'webui' should be removed, Ingress is enabled.")
-    exit_code = 1
+if configuration.get("ingress", False):
+
+    if configuration.get("webui"):
+        print(f"::error file={config}::'webui' should be removed, Ingress is enabled.")
+        exit_code = 1
+
+    if (
+        configuration.get("host_network", False)
+        and configuration.get("ingress_port", 8099) != 0
+    ):
+        print(
+            f"::error file={config}::'ingress_port' this add-on runs on the host network. "
+            "Ingress port should be set to 0."
+        )
+        exit_code = 1
+
+    if (
+        not configuration.get("host_network", False)
+        and configuration.get("ingress_port", 8099) == 0
+    ):
+        print(
+            f"::error file={config}::'ingress_port' this does not run on the host network. "
+            "In Ingress port doesn't have to be randomized (not 0)."
+        )
+        exit_code = 1
 
 if "ports" in configuration and "ports_description" not in configuration:
     print(f"::error file={config}::'ports' is defined without 'ports_description'.")
@@ -71,6 +93,7 @@ if set(configuration.get("ports", {})) != set(
     print(f"::error file={config}::'ports' and 'ports_description' do not match.")
     exit_code = 1
 
+# Checks regarding build.json (if found)
 build = path / "build.json"
 if build.exists():
     with open(build) as fp:
@@ -85,6 +108,7 @@ if build.exists():
         print(f"::error file={build}::{error.message}")
         exit_code = 1
 
+# Start of additional community checks
 if os.environ["INPUT_COMMUNITY"] != "true":
     sys.exit(exit_code)
 
@@ -100,4 +124,5 @@ if set(configuration["arch"]) != set(build_configuration["build_from"]):
     print(f"::error file={build}::Architectures in config and build do not match")
     exit_code = 1
 
+# All good things, come to an end \o/!
 sys.exit(exit_code)

@@ -93,6 +93,19 @@ if set(configuration.get("ports", {})) != set(
     print(f"::error file={config}::'ports' and 'ports_description' do not match.")
     exit_code = 1
 
+if configuration.get("full_access") and any(
+    item in ["devices", "gpio", "uart", "usb"] for item in configuration
+):
+    print(
+        f"::error file={config}::'full_access', don't add 'devices', 'uart', 'usb' or 'gpio' this is not needed".
+    )
+    exit_code = 1
+
+if configuration.get("full_access"):
+    print(
+        f"::warning file={config}::'full_access' consider using other options instead, like 'devices'".
+    )
+
 if "auto_uart" in configuration:
     print(f"::error file={config}::'auto_uart' is deprecated, use 'uart' instead.")
     exit_code = 1

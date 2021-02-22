@@ -193,6 +193,10 @@
       },
       "type": "array"
     },
+    "realtime": {
+      "default": false,
+      "type": "boolean"
+    },
     "schema": {
       "additionalProperties": {},
       "default": {},

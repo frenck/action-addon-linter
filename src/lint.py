@@ -7,7 +7,6 @@ from jsonschema import Draft7Validator, ValidationError, validators
 from ruamel.yaml import YAML
 
 _YAML = YAML()
-_YAML.allow_duplicate_keys = True
 
 
 def check_is_default(validator_class):

@@ -4,9 +4,7 @@ import sys
 from pathlib import Path
 
 from jsonschema import Draft7Validator, ValidationError, validators
-from ruamel.yaml import YAML
-
-_YAML = YAML()
+import yaml
 
 
 def check_is_default(validator_class):
@@ -41,7 +39,7 @@ if not path.exists():
     sys.exit(1)
 
 for file_type in ("json", "yaml", "yml"):
-    config = path / "config.json"
+    config = path / f"config.{file_type}"
     if config.exists():
         break
 
@@ -50,11 +48,11 @@ if not config.exists():
     sys.exit(1)
 
 
-if config.suffix == "json":
-    with open(config) as fp:
+with open(config) as fp:
+    if config.suffix == "json":
         configuration = json.load(fp)
-else:
-    configuration = _YAML.load(path)
+    else:
+        configuration = yaml.load(fp)
 
 with open("/config.schema.json") as fp:
     schema = json.load(fp)
@@ -135,16 +133,16 @@ if not isinstance(configuration.get("tmpfs", False), bool):
 
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):
-    build = path / "build.json"
+    build = path / f"build.{file_type}"
     if build.exists():
         break
 
 if build.exists():
-    if build.suffix == "json":
-        with open(build) as fp:
+    with open(build) as fp:
+        if build.suffix == "json":
             build_configuration = json.load(fp)
-    else:
-        build_configuration = _YAML.load(build)
+        else:
+            build_configuration = yaml.load(fp)
 
     with open("/build.schema.json") as fp:
         build_schema = json.load(fp)

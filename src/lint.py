@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from jsonschema import Draft7Validator, ValidationError, validators
+import yaml
 
 
 def check_is_default(validator_class):
@@ -37,13 +38,21 @@ if not path.exists():
     print(f"::error ::Add-on configuration path not found: {path}")
     sys.exit(1)
 
-config = path / "config.json"
+for file_type in ("json", "yaml", "yml"):
+    config = path / f"config.{file_type}"
+    if config.exists():
+        break
+
 if not config.exists():
-    print(f"::error ::Add-on configuration file not found: {config}")
+    print(f"::error ::Add-on configuration file not found in '{path}'")
     sys.exit(1)
 
+
 with open(config) as fp:
-    configuration = json.load(fp)
+    if config.suffix == "json":
+        configuration = json.load(fp)
+    else:
+        configuration = yaml.load(fp)
 
 with open("/config.schema.json") as fp:
     schema = json.load(fp)
@@ -122,11 +131,18 @@ if not isinstance(configuration.get("tmpfs", False), bool):
     )
     exit_code = 1
 
-# Checks regarding build.json (if found)
-build = path / "build.json"
+# Checks regarding build file(if found)
+for file_type in ("json", "yaml", "yml"):
+    build = path / f"build.{file_type}"
+    if build.exists():
+        break
+
 if build.exists():
     with open(build) as fp:
-        build_configuration = json.load(fp)
+        if build.suffix == "json":
+            build_configuration = json.load(fp)
+        else:
+            build_configuration = yaml.load(fp)
 
     with open("/build.schema.json") as fp:
         build_schema = json.load(fp)

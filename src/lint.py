@@ -4,6 +4,10 @@ import sys
 from pathlib import Path
 
 from jsonschema import Draft7Validator, ValidationError, validators
+from ruamel.yaml import YAML
+
+_YAML = YAML()
+_YAML.allow_duplicate_keys = True
 
 
 def check_is_default(validator_class):
@@ -37,13 +41,21 @@ if not path.exists():
     print(f"::error ::Add-on configuration path not found: {path}")
     sys.exit(1)
 
-config = path / "config.json"
+for file_type in ("json", "yaml", "yml"):
+    config = path / "config.json"
+    if config.exists():
+        break
+
 if not config.exists():
-    print(f"::error ::Add-on configuration file not found: {config}")
+    print(f"::error ::Add-on configuration file not found in '{path}'")
     sys.exit(1)
 
-with open(config) as fp:
-    configuration = json.load(fp)
+
+if config.suffix == "json":
+    with open(config) as fp:
+        configuration = json.load(fp)
+else:
+    configuration = _YAML.load(path)
 
 with open("/config.schema.json") as fp:
     schema = json.load(fp)
@@ -122,11 +134,18 @@ if not isinstance(configuration.get("tmpfs", False), bool):
     )
     exit_code = 1
 
-# Checks regarding build.json (if found)
-build = path / "build.json"
+# Checks regarding build file(if found)
+for file_type in ("json", "yaml", "yml"):
+    build = path / "build.json"
+    if build.exists():
+        break
+
 if build.exists():
-    with open(build) as fp:
-        build_configuration = json.load(fp)
+    if build.suffix == "json":
+        with open(build) as fp:
+            build_configuration = json.load(fp)
+    else:
+        build_configuration = _YAML.load(build)
 
     with open("/build.schema.json") as fp:
         build_schema = json.load(fp)

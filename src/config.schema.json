@@ -180,6 +180,7 @@
       "items": {
         "enum": [
           "DAC_READ_SEARCH",
+          "IPC_LOCK",
           "NET_ADMIN",
           "SYS_ADMIN",
           "SYS_MODULE",

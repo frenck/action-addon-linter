@@ -122,6 +122,10 @@
       "default": true,
       "type": "boolean"
     },
+    "journald": {
+      "default": false,
+      "type": "boolean"
+    },
     "kernel_modules": {
       "default": false,
       "type": "boolean"

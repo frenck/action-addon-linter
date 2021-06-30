@@ -82,6 +82,11 @@ if configuration.get("ingress", False):
             "In Ingress port doesn't have to be randomized (not 0)."
         )
         exit_code = 1
+else:
+    for option in ("ingress_port", "ingress_entry", "ingress_stream",):
+        if configuration.get(option) is not None:
+            print(f"::error file={config}::'{option}' is defined, but `ingress` is not enabled")
+            exit_code = 1
 
 if "ports" in configuration and "ports_description" not in configuration:
     print(f"::error file={config}::'ports' is defined without 'ports_description'.")

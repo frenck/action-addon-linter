@@ -118,6 +118,10 @@
       "minimum": 0,
       "maximum": 65535
     },
+    "ingress_stream": {
+      "default": false,
+      "type": "boolean"
+    },
     "init": {
       "default": true,
       "type": "boolean"

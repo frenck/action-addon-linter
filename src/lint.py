@@ -139,6 +139,14 @@ if configuration.get("snapshot", "hot") == "cold":
             )
             exit_code = 1
 
+if configuration.get("backup", "hot") == "cold":
+    for option in ["backup_pre", "backup_post"]:
+        if option in configuration:
+            print(
+                f"::error file={config}::'{option}' is not valid when using cold backups."
+            )
+            exit_code = 1
+
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):
     build = path / f"build.{file_type}"

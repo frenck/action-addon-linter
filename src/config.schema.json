@@ -220,6 +220,17 @@
     "slug": {
       "type": "string"
     },
+    "snapshot": {
+      "default": "hot",
+      "enum": ["hot", "cold"],
+      "type": "string"
+    },
+    "snapshot_pre": {
+      "type": "string"
+    },
+    "snapshot_post": {
+      "type": "string"
+    },
     "snapshot_exclude": {
       "items": {
         "type": "string"

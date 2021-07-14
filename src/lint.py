@@ -131,6 +131,14 @@ if not isinstance(configuration.get("tmpfs", False), bool):
     )
     exit_code = 1
 
+if configuration.get("snapshot", "hot") == "cold":
+    for option in ["snapshot_pre", "snapshot_post"]:
+        if option in configuration:
+            print(
+                f"::error file={config}::'{option}' is not valid when using cold snapshots."
+            )
+            exit_code = 1
+
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):
     build = path / f"build.{file_type}"

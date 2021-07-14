@@ -147,6 +147,22 @@ if configuration.get("backup", "hot") == "cold":
             )
             exit_code = 1
 
+if "snapshot" in configuration:
+    print(f"::error file={config}::'snapshot' is deprecated, use 'backup' instead.")
+    exit_code = 1
+
+if "snapshot_exclude" in configuration:
+    print(f"::error file={config}::'snapshot_exclude' is deprecated, use 'backup_exclude' instead.")
+    exit_code = 1
+
+if "snapshot_pre" in configuration:
+    print(f"::error file={config}::'snapshot_pre' is deprecated, use 'backup_pre' instead.")
+    exit_code = 1
+
+if "snapshot_post" in configuration:
+    print(f"::error file={config}::'snapshot_post' is deprecated, use 'backup_post' instead.")
+    exit_code = 1
+
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):
     build = path / f"build.{file_type}"

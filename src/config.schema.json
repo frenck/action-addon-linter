@@ -29,6 +29,23 @@
       "default": false,
       "type": "boolean"
     },
+    "backup": {
+      "default": "hot",
+      "enum": ["hot", "cold"],
+      "type": "string"
+    },
+    "backup_exclude": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "backup_pre": {
+      "type": "string"
+    },
+    "backup_post": {
+      "type": "string"
+    },
     "boot": {
       "default": "auto",
       "enum": ["auto", "manual"],
@@ -225,17 +242,17 @@
       "enum": ["hot", "cold"],
       "type": "string"
     },
-    "snapshot_pre": {
-      "type": "string"
-    },
-    "snapshot_post": {
-      "type": "string"
-    },
     "snapshot_exclude": {
       "items": {
         "type": "string"
       },
       "type": "array"
+    },
+    "snapshot_pre": {
+      "type": "string"
+    },
+    "snapshot_post": {
+      "type": "string"
     },
     "stage": {
       "default": "stable",

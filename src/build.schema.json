@@ -38,7 +38,9 @@
         }
       },
       "labels": {
-        "additionalProperties": {},
+        "additionalProperties": {
+          "type": "string"
+        },
         "default": {},
         "type": "object"
       },

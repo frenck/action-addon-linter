@@ -37,6 +37,13 @@
           "type": "string"
         }
       },
+      "labels": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "default": {},
+        "type": "object"
+      },
       "type": "object"
     },
     "squash": {

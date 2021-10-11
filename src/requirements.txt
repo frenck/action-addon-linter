@@ -1,2 +1,2 @@
-jsonschema==4.0.1
+jsonschema==4.1.0
 pyyaml==5.4.1

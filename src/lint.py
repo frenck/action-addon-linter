@@ -131,14 +131,6 @@ if not isinstance(configuration.get("tmpfs", False), bool):
     )
     exit_code = 1
 
-if configuration.get("snapshot", "hot") == "cold":
-    for option in ["snapshot_pre", "snapshot_post"]:
-        if option in configuration:
-            print(
-                f"::error file={config}::'{option}' is not valid when using cold snapshots."
-            )
-            exit_code = 1
-
 if configuration.get("backup", "hot") == "cold":
     for option in ["backup_pre", "backup_post"]:
         if option in configuration:
@@ -146,22 +138,6 @@ if configuration.get("backup", "hot") == "cold":
                 f"::error file={config}::'{option}' is not valid when using cold backups."
             )
             exit_code = 1
-
-if "snapshot" in configuration:
-    print(f"::error file={config}::'snapshot' is deprecated, use 'backup' instead.")
-    exit_code = 1
-
-if "snapshot_exclude" in configuration:
-    print(f"::error file={config}::'snapshot_exclude' is deprecated, use 'backup_exclude' instead.")
-    exit_code = 1
-
-if "snapshot_pre" in configuration:
-    print(f"::error file={config}::'snapshot_pre' is deprecated, use 'backup_pre' instead.")
-    exit_code = 1
-
-if "snapshot_post" in configuration:
-    print(f"::error file={config}::'snapshot_post' is deprecated, use 'backup_post' instead.")
-    exit_code = 1
 
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):

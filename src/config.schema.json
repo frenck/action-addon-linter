@@ -237,23 +237,6 @@
     "slug": {
       "type": "string"
     },
-    "snapshot": {
-      "default": "hot",
-      "enum": ["hot", "cold"],
-      "type": "string"
-    },
-    "snapshot_exclude": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    },
-    "snapshot_pre": {
-      "type": "string"
-    },
-    "snapshot_post": {
-      "type": "string"
-    },
     "stage": {
       "default": "stable",
       "enum": ["deprecated", "experimental", "stable"],

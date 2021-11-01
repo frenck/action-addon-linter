@@ -52,7 +52,7 @@ with open(config) as fp:
     if config.suffix == "json":
         configuration = json.load(fp)
     else:
-        configuration = yaml.load(fp)
+        configuration = yaml.load(fp, Loader=yaml.SafeLoader)
 
 with open("/config.schema.json") as fp:
     schema = json.load(fp)
@@ -174,7 +174,7 @@ if build.exists():
         if build.suffix == "json":
             build_configuration = json.load(fp)
         else:
-            build_configuration = yaml.load(fp)
+            build_configuration = yaml.load(fp, Loader=yaml.SafeLoader)
 
     with open("/build.schema.json") as fp:
         build_schema = json.load(fp)

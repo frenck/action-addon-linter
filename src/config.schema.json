@@ -51,6 +51,10 @@
       "enum": ["auto", "manual"],
       "type": "string"
     },
+    "codenotary": {
+      "type": "string",
+      "format": "email"
+    },
     "description": {
       "type": "string"
     },

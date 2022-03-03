@@ -39,6 +39,21 @@
       },
       "type": "object"
     },
+    "codenotary": {
+      "additionalProperties": false,
+      "default": {},
+      "properties": {
+        "signer": {
+          "type": "string",
+          "format": "email"
+        },
+        "base_image": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "type": "object"
+    },
     "labels": {
       "additionalProperties": {
         "type": "string"

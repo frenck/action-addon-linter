@@ -28,9 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: 🚀 Run Home Assistant Add-on Lint
-        uses: frenck/action-addon-linter@v1
+        uses: frenck/action-addon-linter@v2
         with:
           path: "./addon"
 ```

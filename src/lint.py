@@ -73,16 +73,6 @@ if configuration.get("ingress", False):
         exit_code = 1
 
     if (
-        configuration.get("host_network", False)
-        and configuration.get("ingress_port", 8099) != 0
-    ):
-        print(
-            f"::error file={config}::'ingress_port' this add-on runs on the host network. "
-            "Ingress port should be set to 0."
-        )
-        exit_code = 1
-
-    if (
         not configuration.get("host_network", False)
         and configuration.get("ingress_port", 8099) == 0
     ):

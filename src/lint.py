@@ -82,16 +82,6 @@ if configuration.get("ingress", False):
         )
         exit_code = 1
 
-if "ports" in configuration and "ports_description" not in configuration:
-    print(f"::error file={config}::'ports' is defined without 'ports_description'.")
-    exit_code = 1
-
-if set(configuration.get("ports", {})) != set(
-    configuration.get("ports_description", {})
-):
-    print(f"::error file={config}::'ports' and 'ports_description' do not match.")
-    exit_code = 1
-
 if configuration.get("full_access") and any(
     item in ["devices", "gpio", "uart", "usb"] for item in configuration
 ):

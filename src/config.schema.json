@@ -208,10 +208,12 @@
     "privileged": {
       "items": {
         "enum": [
+          "BPF",
           "DAC_READ_SEARCH",
           "IPC_LOCK",
           "NET_ADMIN",
           "NET_RAW",
+          "PREFMON",
           "SYS_ADMIN",
           "SYS_MODULE",
           "SYS_NICE",

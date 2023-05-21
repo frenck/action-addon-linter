@@ -119,6 +119,12 @@ if configuration.get("backup", "hot") == "cold":
             )
             exit_code = 1
 
+if configuration.get("watchdog"):
+    print(
+        f"::error file={config}::'watchdog', is obsolete. Use the native Docker HEALTHCHECK directive instead."
+    )
+    exit_code = 1
+
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):
     build = path / f"build.{file_type}"

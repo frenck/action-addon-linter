@@ -213,7 +213,7 @@
           "IPC_LOCK",
           "NET_ADMIN",
           "NET_RAW",
-          "PREFMON",
+          "PERFMON",
           "SYS_ADMIN",
           "SYS_MODULE",
           "SYS_NICE",

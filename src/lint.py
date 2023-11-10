@@ -133,6 +133,41 @@ if configuration.get("map") and (
         f"::warning file={config}::'map' contains the 'config' folder, which has been replaced by 'homeassistant_config'. See: https://developers.home-assistant.io/blog/2023/11/06/public-addon-config"
     )
 
+if (
+    configuration.get("map")
+    and (
+        "config" in configuration["map"]
+        or "config:rw" in configuration["map"]
+        or "config:ro" in configuration["map"]
+    )
+    and (
+        "homeassistant_config" in configuration["map"]
+        or "homeassistant_config:rw" in configuration["map"]
+        or "homeassistant_config:ro" in configuration["map"]
+    )
+):
+    print(
+        f"::error file={config}::'map' contains both the 'config' and 'homeassistant_config' folder, which are conflicting. See: https://developers.home-assistant.io/blog/2023/11/06/public-addon-config"
+    )
+    exit_code = 1
+
+if (
+    configuration.get("map")
+    and (
+        "config" in configuration["map"]
+        or "config:rw" in configuration["map"]
+        or "config:ro" in configuration["map"]
+    )
+    and (
+        "addon_config" in configuration["map"]
+        or "addon_config:rw" in configuration["map"]
+        or "addon_config:ro" in configuration["map"]
+    )
+):
+    print(
+        f"::error file={config}::'map' contains both the 'config' and 'addon_config' folder, which are conflicting. See: https://developers.home-assistant.io/blog/2023/11/06/public-addon-config"
+    )
+    exit_code = 1
 
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):

@@ -67,7 +67,6 @@ for error in sorted(v.iter_errors(configuration), key=str):
     exit_code = 1
 
 if configuration.get("ingress", False):
-
     if configuration.get("webui"):
         print(f"::error file={config}::'webui' should be removed, Ingress is enabled.")
         exit_code = 1
@@ -125,6 +124,16 @@ if configuration.get("watchdog"):
     )
     exit_code = 1
 
+if configuration.get("map") and (
+    "config" in configuration["map"]
+    or "config:rw" in configuration["map"]
+    or "config:ro" in configuration["map"]
+):
+    print(
+        f"::warning file={config}::'map' contains the 'config' folder, which has been replaced by 'homeassistant_config'. See: https://developers.home-assistant.io/blog/2023/11/06/public-addon-config"
+    )
+
+
 # Checks regarding build file(if found)
 for file_type in ("json", "yaml", "yml"):
     build = path / f"build.{file_type}"
@@ -159,7 +168,11 @@ if not build.exists():
     print(f"::error file={build}::The build.json file is missing")
     sys.exit(1)
 
-if "build_from" in build_configuration and not isinstance(build_configuration["build_from"], str) and set(configuration["arch"]) != set(build_configuration["build_from"]):
+if (
+    "build_from" in build_configuration
+    and not isinstance(build_configuration["build_from"], str)
+    and set(configuration["arch"]) != set(build_configuration["build_from"])
+):
     print(f"::error file={build}::Architectures in config and build do not match")
     exit_code = 1
 

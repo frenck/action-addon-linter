@@ -167,7 +167,7 @@
     },
     "map": {
       "items": {
-        "pattern": "^(config|ssl|addons|backup|share|media)(:(rw|ro))?$"
+        "pattern": "^(addon_config|all_addon_configs|config|homeassistant_config|ssl|addons|backup|share|media)(:(rw|ro))?$"
       },
       "type": "array"
     },

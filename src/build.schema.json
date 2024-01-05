@@ -15,27 +15,27 @@
           "properties": {
             "aarch64": {
               "default": "homeassistant/aarch64-base:latest",
-              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?([\\-\\w{}]+)/([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
+              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?(([\\-\\w{}]+)/)?([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
               "type": "string"
             },
             "amd64": {
               "default": "homeassistant/amd64-base:latest",
-              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?([\\-\\w{}]+)/([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
+              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?(([\\-\\w{}]+)/)?([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
               "type": "string"
             },
             "armhf": {
               "default": "homeassistant/armhf-base:latest",
-              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?([\\-\\w{}]+)/([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
+              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?(([\\-\\w{}]+)/)?([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
               "type": "string"
             },
             "armv7": {
               "default": "homeassistant/armv7-base:latest",
-              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?([\\-\\w{}]+)/([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
+              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?(([\\-\\w{}]+)/)?([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
               "type": "string"
             },
             "i386": {
               "default": "homeassistant/i386-base:latest",
-              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?([\\-\\w{}]+)/([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
+              "pattern": "^([a-zA-Z\\-\\.:\\d{}]+/)*?(([\\-\\w{}]+)/)?([\\-\\w{}]+)(:[\\.\\-\\w{}]+)?$",
               "type": "string"
             }
           },

@@ -51,6 +51,12 @@
       "enum": ["auto", "manual"],
       "type": "string"
     },
+    "breaking_versions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "codenotary": {
       "type": "string",
       "format": "email"

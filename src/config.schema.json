@@ -48,7 +48,7 @@
     },
     "boot": {
       "default": "auto",
-      "enum": ["auto", "manual"],
+      "enum": ["auto", "manual", "manual_only"],
       "type": "string"
     },
     "codenotary": {

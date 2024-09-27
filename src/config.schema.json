@@ -172,10 +172,44 @@
       "type": "array"
     },
     "map": {
-      "items": {
-        "pattern": "^(addon_config|all_addon_configs|config|homeassistant_config|ssl|addons|backup|share|media)(:(rw|ro))?$"
-      },
-      "type": "array"
+      "type": "array",
+      "oneOf": [
+        {
+          "items": {
+            "type": "string",
+            "pattern": "^(addon_config|all_addon_configs|config|homeassistant_config|ssl|addons|backup|share|media)(:(rw|ro))?$"
+          }
+        },
+        {
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "addon_config",
+                  "all_addon_configs",
+                  "config",
+                  "homeassistant_config",
+                  "ssl",
+                  "addons",
+                  "backup",
+                  "share",
+                  "media"
+                ]
+              },
+              "read_only": {
+                "type": "boolean"
+              },
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": ["type"],
+            "additionalProperties": false
+          }
+        }
+      ]
     },
     "name": {
       "type": "string"

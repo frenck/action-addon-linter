@@ -188,14 +188,15 @@
                 "type": "string",
                 "enum": [
                   "addon_config",
-                  "all_addon_configs",
-                  "config",
-                  "homeassistant_config",
-                  "ssl",
                   "addons",
+                  "all_addon_configs",
                   "backup",
+                  "config",
+                  "data",
+                  "homeassistant_config",
+                  "media",
                   "share",
-                  "media"
+                  "ssl"
                 ]
               },
               "read_only": {

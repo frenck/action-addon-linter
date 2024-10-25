@@ -129,6 +129,10 @@
       "default": false,
       "type": "boolean"
     },
+    "host_uts": {
+      "default": false,
+      "type": "boolean"
+    },
     "image": {
       "type": "string"
     },

@@ -197,6 +197,12 @@ if build.exists():
         print(f"::error file={build}::{error.message}")
         exit_code = 1
 
+    if "codenotary" in build_configuration:
+        print(
+            f"::error file={build}::'codenotary' is deprecated and no longer used. Please remove this field."
+        )
+        exit_code = 1
+
 # Start of additional community checks
 if os.environ["INPUT_COMMUNITY"] != "true":
     sys.exit(exit_code)

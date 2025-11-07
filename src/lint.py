@@ -94,6 +94,11 @@ if configuration.get("full_access"):
         f"::warning file={config}::'full_access' consider using other options instead, like 'devices'"
     )
 
+if configuration.get("advanced"):
+    print(
+        f"::warning file={config}::'advanced' flag is not recommended. Home Assistant plans to deprecate this flag in the near future. It causes confusion for end users who are unable to find add-ons."
+    )
+
 if "auto_uart" in configuration:
     print(f"::error file={config}::'auto_uart' is deprecated, use 'uart' instead.")
     exit_code = 1

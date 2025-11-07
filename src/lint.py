@@ -66,6 +66,16 @@ for error in sorted(v.iter_errors(configuration), key=str):
     print(f"::error file={config}::{error.message}")
     exit_code = 1
 
+# Check for deprecated architectures
+deprecated_archs = ["armhf", "armv7", "i386"]
+if "arch" in configuration:
+    for arch in configuration["arch"]:
+        if arch in deprecated_archs:
+            print(
+                f"::warning file={config}::Architecture '{arch}' is deprecated and no longer supported "
+                "as of Home Assistant 2025.12 (December 3, 2025). Please remove it from the 'arch' list."
+            )
+
 if configuration.get("ingress", False):
     if configuration.get("webui"):
         print(f"::error file={config}::'webui' should be removed, Ingress is enabled.")
@@ -196,6 +206,16 @@ if build.exists():
     for error in sorted(v.iter_errors(build_configuration), key=str):
         print(f"::error file={build}::{error.message}")
         exit_code = 1
+
+    # Check for deprecated architectures in build configuration
+    deprecated_archs = ["armhf", "armv7", "i386"]
+    if "build_from" in build_configuration and isinstance(build_configuration["build_from"], dict):
+        for arch in build_configuration["build_from"]:
+            if arch in deprecated_archs:
+                print(
+                    f"::warning file={build}::Architecture '{arch}' is deprecated and no longer supported "
+                    "as of Home Assistant 2025.12 (December 3, 2025). Please remove it from the 'build_from' configuration."
+                )
 
     if "codenotary" in build_configuration:
         print(

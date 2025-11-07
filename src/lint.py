@@ -203,6 +203,12 @@ if build.exists():
         )
         exit_code = 1
 
+    if "squash" in build_configuration:
+        print(
+            f"::error file={build}::'squash' is no longer supported. The Supervisor now uses Docker Buildkit, which doesn't support this. Please remove this field."
+        )
+        exit_code = 1
+
 # Start of additional community checks
 if os.environ["INPUT_COMMUNITY"] != "true":
     sys.exit(exit_code)

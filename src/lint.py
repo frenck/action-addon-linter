@@ -124,6 +124,12 @@ if configuration.get("watchdog"):
     )
     exit_code = 1
 
+if "codenotary" in configuration:
+    print(
+        f"::error file={config}::'codenotary' is deprecated and no longer used. Please remove this field."
+    )
+    exit_code = 1
+
 if configuration.get("map") and (
     "config" in configuration["map"]
     or "config:rw" in configuration["map"]

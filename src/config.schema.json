@@ -319,6 +319,30 @@
       "default": false,
       "type": "boolean"
     },
+    "ulimits": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "soft": {
+                "type": "integer"
+              },
+              "hard": {
+                "type": "integer"
+              }
+            },
+            "required": ["soft", "hard"],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "default": {},
+      "type": "object"
+    },
     "url": {
       "format": "uri-reference",
       "type": "string"

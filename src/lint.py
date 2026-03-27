@@ -2,6 +2,7 @@ import json
 import os
 import sys
 from pathlib import Path
+import re
 
 from jsonschema import Draft7Validator, ValidationError, validators
 import yaml
@@ -65,6 +66,17 @@ exit_code = 0
 for error in sorted(v.iter_errors(configuration), key=str):
     print(f"::error file={config}::{error.message}")
     exit_code = 1
+
+# Check image format
+if "image" in configuration:
+    image_pattern = r"^([a-z0-9][a-z0-9.\-]*(:[0-9]+)?/)*?([a-z0-9{][a-z0-9.\-_{}]*/)*?([a-z0-9{][a-z0-9.\-_{}]*)$"
+    if not re.match(image_pattern, configuration["image"]):
+        print(
+            f"::error file={config}::'image' does not match the required format. "
+            f"Image names must use only lowercase letters, numbers, dots, hyphens, and underscores. "
+            f"Got '{configuration['image']}'"
+        )
+        exit_code = 1
 
 # Check for deprecated architectures
 deprecated_archs = ["armhf", "armv7", "i386"]

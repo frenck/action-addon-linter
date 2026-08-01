@@ -181,7 +181,7 @@
         {
           "items": {
             "type": "string",
-            "pattern": "^(addon_config|all_addon_configs|all_app_configs|config|homeassistant_config|ssl|addons|local_apps|backup|share|media)(:(rw|ro))?$"
+            "pattern": "^(addon_config|app_config|all_addon_configs|all_app_configs|config|homeassistant_config|ssl|addons|local_apps|backup|share|media)(:(rw|ro))?$"
           }
         },
         {
@@ -192,6 +192,7 @@
                 "type": "string",
                 "enum": [
                   "addon_config",
+                  "app_config",
                   "addons",
                   "local_apps",
                   "all_addon_configs",

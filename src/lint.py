@@ -35,7 +35,7 @@ def check_is_default(validator_class):
 
 path = Path(os.environ["INPUT_PATH"])
 if not path.exists():
-    print(f"::error ::Add-on configuration path not found: {path}")
+    print(f"::error ::App configuration path not found: {path}")
     sys.exit(1)
 
 for file_type in ("json", "yaml", "yml"):
@@ -44,7 +44,7 @@ for file_type in ("json", "yaml", "yml"):
         break
 
 if not config.exists():
-    print(f"::error ::Add-on configuration file not found in '{path}'")
+    print(f"::error ::App configuration file not found in '{path}'")
     sys.exit(1)
 
 
@@ -106,7 +106,7 @@ if configuration.get("full_access"):
 
 if configuration.get("advanced"):
     print(
-        f"::warning file={config}::'advanced' flag is not recommended. Home Assistant plans to deprecate this flag in the near future. It causes confusion for end users who are unable to find add-ons."
+        f"::warning file={config}::'advanced' flag is not recommended. Home Assistant plans to deprecate this flag in the near future. It causes confusion for end users who are unable to find apps."
     )
 
 if "auto_uart" in configuration:
@@ -239,7 +239,7 @@ if os.environ["INPUT_COMMUNITY"] != "true":
     sys.exit(exit_code)
 
 if configuration["version"] != "dev":
-    print(f"::error file={config}::Add-on version identifier must be 'dev'")
+    print(f"::error file={config}::App version identifier must be 'dev'")
     exit_code = 1
 
 if not build.exists():

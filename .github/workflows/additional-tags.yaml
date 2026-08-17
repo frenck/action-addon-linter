@@ -11,12 +11,19 @@ on:
       - published
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   additional-tags:
     name: 🏷 Additional Tags
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # To push the additional major/minor tags
     steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v6.0.2
+      # The action below pushes tags using the credentials persisted
+      # by the checkout, so they cannot be disabled here.
+      - name: ⤵️ Check out code from GitHub # zizmor: ignore[artipacked]
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: 🚀 Run Release Tracker
-        uses: vweevers/additional-tags-action@v2.0.0
+        uses: vweevers/additional-tags-action@3bab55b44e81186dcfef7db9f2cbca01a78eb710 # v2.0.0

@@ -1,6 +1,6 @@
 ---
-name: "Frenck's Home Assistant Add-on Linter"
-description: 🚀 Frenck's GitHub Action for linting Home Assistant Add-ons.
+name: "Frenck's Home Assistant App Linter"
+description: 🚀 Frenck's GitHub Action for linting Home Assistant Apps.
 author: frenck
 
 branding:
@@ -9,10 +9,10 @@ branding:
 
 inputs:
   path:
-    description: Path to the add-on configuration (where config.json is)
+    description: Path to the app configuration (where config.json is)
     required: true
   community:
-    description: Enable Home Assistant Community Add-ons mode
+    description: Enable Home Assistant Community Apps mode
     default: "false"
     required: false
 

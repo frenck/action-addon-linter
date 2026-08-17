@@ -1,4 +1,4 @@
-# 🚀 Frenck's Github Action: Home Assistant Add-on Linter
+# 🚀 Frenck's Github Action: Home Assistant App Linter
 
 [![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
@@ -7,14 +7,14 @@
 
 [![Sponsor Frenck via GitHub Sponsors][github-sponsors-shield]][github-sponsors]
 
-🚀 Frenck's GitHub Action for linting Home Assistant Add-ons.
+🚀 Frenck's GitHub Action for linting Home Assistant Apps.
 
 ## About
 
-This GitHub Action is able to validate/lint Home Assistant Add-on configuration
+This GitHub Action is able to validate/lint Home Assistant App configuration
 files.
 
-Besides checking for validity of add-on configuration files, it will
+Besides checking for validity of app configuration files, it will
 also warn for default configurations that can be removed and cleaned up.
 
 ## Usage
@@ -24,28 +24,28 @@ name: Lint
 on: [push, pull_request]
 jobs:
   build:
-    name: Add-on configuration
+    name: App configuration
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v3
-      - name: 🚀 Run Home Assistant Add-on Lint
-        uses: frenck/action-addon-linter@v2
+      - name: 🚀 Run Home Assistant App Lint
+        uses: frenck/action-app-linter@v2
         with:
-          path: "./addon"
+          path: "./app"
 ```
 
 ## Arguments
 
-|    Input    |                             Description                             |    Usage     |
-| :---------: | :-----------------------------------------------------------------: | :----------: |
-|   `path`    |     Path to the folder containing the add-on config.json file.      | **Required** |
-| `community` | Enable Home Assistant Community Add-ons mode, with specific checks. |  _Optional_  |
+|    Input    |                           Description                            |    Usage     |
+| :---------: | :--------------------------------------------------------------: | :----------: |
+|   `path`    |     Path to the folder containing the app config.json file.      | **Required** |
+| `community` | Enable Home Assistant Community Apps mode, with specific checks. |  _Optional_  |
 
 ## Updating the JSON Schema
 
 For the larger part, JSON Schemas are used to validate the configuration files.
-The schema files for both the add-on `config.json` and `build.json` can be found
+The schema files for both the app `config.json` and `build.json` can be found
 in the `src/` folder.
 
 - `src/config.schema.json` is used to validate `config.json`
@@ -78,8 +78,8 @@ And even allowing for using the latest major or minor version.
 For example; this will use release `v1.1.1` of a GitHub Action:
 
 ```yaml
-- name: 🚀 Run Home Assistant Add-on Lint
-  uses: frenck/action-addon-linter@v1.1.1
+- name: 🚀 Run Home Assistant App Lint
+  uses: frenck/action-app-linter@v1.1.1
 ```
 
 While the following example, will use the `v1.1.x` minor release, for example
@@ -87,8 +87,8 @@ if `v1.1.2` is the latest releases (starting with `v1.1`), this will run
 `v1.1.2`:
 
 ```yaml
-- name: 🚀 Run Home Assistant Add-on Lint
-  uses: frenck/action-addon-linter@v1.1
+- name: 🚀 Run Home Assistant App Lint
+  uses: frenck/action-app-linter@v1.1
 ```
 
 As in the examples throughout the documentation, the following example is
@@ -96,8 +96,8 @@ locked on major version, meaning any `v1.x.x` latest version will be used,
 as long as it is version 1.
 
 ```yaml
-- name: 🚀 Run Home Assistant Add-on Lint
-  uses: frenck/action-addon-linter@v1
+- name: 🚀 Run Home Assistant App Lint
+  uses: frenck/action-app-linter@v1
 ```
 
 ### Automatically update using Dependabot
@@ -133,7 +133,7 @@ This is an active open-source project. We are always open to people who want to
 use the code or contribute to it.
 
 We've set up a separate document for our
-[contribution guidelines](CONTRIBUTING.md).
+[contribution guidelines](.github/CONTRIBUTING.md).
 
 Thank you for being involved! :heart_eyes:
 
@@ -148,7 +148,7 @@ check [the contributor's page][contributors].
 
 MIT License
 
-Copyright (c) 2021-2025 Franck Nijhof
+Copyright (c) 2021-2026 Franck Nijhof
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -168,13 +168,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[contributors]: https://github.com/frenck/action-addon-linter/graphs/contributors
+[contributors]: https://github.com/frenck/action-app-linter/graphs/contributors
 [frenck]: https://github.com/frenck
 [github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
 [github-sponsors]: https://github.com/sponsors/frenck
-[license-shield]: https://img.shields.io/github/license/frenck/action-addon-linter.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
+[license-shield]: https://img.shields.io/github/license/frenck/action-app-linter.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
-[releases-shield]: https://img.shields.io/github/release/frenck/action-addon-linter.svg
-[releases]: https://github.com/frenck/action-addon-linter/releases
+[releases-shield]: https://img.shields.io/github/release/frenck/action-app-linter.svg
+[releases]: https://github.com/frenck/action-app-linter/releases
 [semver]: http://semver.org/spec/v2.0.0.html
